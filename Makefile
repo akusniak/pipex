@@ -12,7 +12,7 @@ SRCS = main.c\
 		child.c\
 		action.c\
 		command.c\
-		path.c\
+		path.c
 
 SRCS_BONUS =
 
