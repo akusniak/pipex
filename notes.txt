@@ -20,7 +20,7 @@ wait
 waitpid
 
 
-
+pid = process ID number
 
 unlink --> permet de delete completement un fichier : int unlink(const char *pathname);
 
@@ -48,8 +48,9 @@ dup2(fileToDuplicate, ValueWanted) ---> ferme le file ToDuplicate
 
 coeur du projet est de bouger l'output de la premiere commnde vers l'input de la deuxieme commande.
 
+waitpid(IdDuProcessA_Attendre, NULL, 0);
 
-
+idee pour femer les fd: fonction qui rend en parametre *fd, les deux fd actuellement utilise et qui clean tout sauf ces deux la
 
 *********************************
 
@@ -58,4 +59,7 @@ coeur du projet est de bouger l'output de la premiere commnde vers l'input de la
 3. this process execute our command;
 4. the second command process is also created by our main process;
 5. create a pipe between our first and our second process;
+
+
+
 
