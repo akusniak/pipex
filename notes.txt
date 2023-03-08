@@ -1,0 +1,61 @@
+./pipex file1 cmd1 cmd2 file2
+
+open
+close
+read
+write
+malloc
+free
+perror
+strerror
+access
+dup
+dup2
+execve
+exit
+fork
+pipe
+unlink
+wait
+waitpid
+
+
+
+
+unlink --> permet de delete completement un fichier : int unlink(const char *pathname);
+
+dup et dup2 pour dupliquer un file descriptor
+dup choisit automatiquement un file descriptor (le plus petit possible)
+dup2 nous laisse la possibilite de choisir. Si on decide t'utiliser un fd existant ca va le close
+
+apres dup (ou dup2), l'ancien et le nouveau fd sont interchangeable
+
+-----------------------------------------------------------------------------------------------------
+
+unistdh pour fork
+
+
+fork permet de splitter les processet d'avir une copie propre des variables utilisees>
+
+
+par default --> 0 STDIN
+			--> 1 STDOUT
+			--> 2 STRERR
+
+dup(file) --> return another file descriptor for file.
+
+dup2(fileToDuplicate, ValueWanted) ---> ferme le file ToDuplicate
+
+coeur du projet est de bouger l'output de la premiere commnde vers l'input de la deuxieme commande.
+
+
+
+
+*********************************
+
+1. create a main process;
+2. fork into an other process;
+3. this process execute our command;
+4. the second command process is also created by our main process;
+5. create a pipe between our first and our second process;
+
