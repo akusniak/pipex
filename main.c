@@ -14,26 +14,36 @@
 
 int	main(int ac, char **param)
 {
-	int	fd[2];
-	int	pid1;
-	int	pid2;
+	t_path	*path;
+	int		fd[2];
+	int		pid1;
+	int		pid2;
 
 	if (ac == 5)
 	{
+		path = malloc(sizeof(t_path));
+		if (path == NULL)
+			return (0);
+		ft_path(path);
+
 		if (pipe(fd) == -1)
 			return (1);
 		pid1 = fork();
 		if (pid1 < 0)
 			return (1);
-		ft_child_one(fd, pid1);
+		ft_child_one(fd, pid1, param, path);
+
 		pid2 = fork();
 		if (pid2 < 0)
 			return (1);
-		ft_child_two(fd, pid2);
+		ft_child_two(fd, pid2, param, path);
+
 		close(fd[0]);
 		close(fd[1]);
+
 		waitpid(pid1, NULL, 0);
 		waitpid(pid2, NULL, 0);
+
 		return (0);
 	}
 	else
@@ -44,3 +54,18 @@ int	main(int ac, char **param)
 }
 // .pipex   file1    command1 command2 file2
 // param[0] param[1] param[2] param[3] param[4]
+
+/*
+
+La fonction execve
+int execve(const char *path, char *const argv[], char *envp[]);
+
+path = chemin d'accés à notre commande
+argv = arguments nécessaires à la commande
+envp = paths d'accés aux commandes ("env" puis ligne PATH)
+
+besoin d'une fonction pour trouver le bon chemin
+
+besoin d'utiliser la fonction access() pour savoir si la fonction existe et si elle est exécutable
+
+*/

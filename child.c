@@ -12,11 +12,11 @@
 
 #include "pipex.h"
 
-void	ft_child_one(int *fd, int pid1)
+void	ft_child_one(int *fd, int pid1, char **param, t_path *path)
 {
 	int	fd1;
 
-	fd1 = open("axel.txt", O_RDONLY);
+	fd1 = open(param[1], O_RDONLY);
 	if (fd1 == -1)
 	{
 		close (fd[0]);
@@ -30,17 +30,17 @@ void	ft_child_one(int *fd, int pid1)
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[0]);
 		close(fd1);
-		execlp("cat", "cat", NULL);
+		ft_execute_cmd(param[2], path);
 	}
 	else
 		return ;
 }
 
-void	ft_child_two(int *fd, int pid2)
+void	ft_child_two(int *fd, int pid2, char **param, t_path *path)
 {
 	int	fd2;
 
-	fd2 = open("result.txt", O_CREAT | O_RDWR, 00700);
+	fd2 = open(param[4], O_CREAT | O_RDWR, 00700);
 	if (fd2 == -1)
 	{
 		close(fd[0]);
@@ -54,8 +54,9 @@ void	ft_child_two(int *fd, int pid2)
 		dup2(fd2, STDOUT_FILENO);
 		close(fd[1]);
 		close(fd2);
-		execlp("wc", "wc", NULL);
+		ft_execute_cmd(param[3], path);
 	}
 	else
 		return ;
 }
+

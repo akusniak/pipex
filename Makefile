@@ -9,7 +9,10 @@ COLOUR_GREEN=\033[0;32m
 RM = rm -f
 
 SRCS = main.c\
-		child.c
+		child.c\
+		action.c\
+		command.c\
+		path.c\
 
 SRCS_BONUS =
 
