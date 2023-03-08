@@ -59,4 +59,3 @@ void	ft_child_two(int *fd, int pid2, char **param, t_path *path)
 	else
 		return ;
 }
-
