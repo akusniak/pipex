@@ -1,9 +1,0 @@
-a.out
-axel.txt
-libft
-libft.h
-main.c
-Makefile
-notes.txt
-pipex.h
-result.txt
