@@ -12,11 +12,13 @@ void    ft_execute_cmd(char *command, t_path *path)
     {
         cmd = ft_strjoin(path->clean[i], command);
         if (ft_check_command(cmd) == COMMAND_OK)
+        {
             execve(cmd, command_w_options, &path->clean[i]);
-        else
-            ft_printf("PLOUF");
+            exit(0);
+        }    
         ft_printf("\nNot the good path, we go next\n");
         free(cmd);
         i = i + 1;
     }
+    //please enter a good command
 }

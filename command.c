@@ -3,7 +3,7 @@
 
 char    **ft_get_command(char *command)
 {
-    char **command_w_options;
+    char **command_w_options;//rajouter un NULL à la fin
 
     command_w_options = ft_split(command, 32);
     if (command_w_options == NULL)
