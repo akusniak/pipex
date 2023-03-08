@@ -11,10 +11,10 @@ void    ft_execute_cmd(char *command, t_path *path)
     while (path->clean[i])
     {
         cmd = ft_strjoin(path->clean[i], command);
-        //if (ft_check_command(cmd) == COMMAND_OK)
-            execve(cmd, command_w_options, &(path->clean[i]));
-        //else
-            //error wrong command
+        if (ft_check_command(cmd) == COMMAND_OK)
+            execve(cmd, command_w_options, &path->clean[i]);
+        else
+            ft_printf("PLOUF");
         ft_printf("\nNot the good path, we go next\n");
         free(cmd);
         i = i + 1;
