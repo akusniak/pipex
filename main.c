@@ -6,7 +6,7 @@
 /*   By: akusniak <akusniak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:52:30 by akusniak          #+#    #+#             */
-/*   Updated: 2023/03/08 16:14:14 by akusniak         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:32:01 by akusniak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	main(int ac, char **param)
 	int	fd[2];
 	int	pid1;
 	int	pid2;
-	int	fd1;
-	int	fd2;
 
 	if (ac == 5)
 	{

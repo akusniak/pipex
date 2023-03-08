@@ -8,7 +8,8 @@ COLOUR_GREEN=\033[0;32m
 
 RM = rm -f
 
-SRCS =
+SRCS = main.c\
+		child.c
 
 SRCS_BONUS =
 
@@ -23,7 +24,7 @@ LIB = make bonus -C ./libft
 $(NAME) : $(OBJS)
 				$(LIB)
 				$(CC) $(CFLAGS) $(OBJS) libft/libft.a -o $(NAME)
-				
+
 
 lib :
 		$(LIB)
