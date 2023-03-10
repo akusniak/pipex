@@ -6,7 +6,7 @@
 /*   By: akusniak <akusniak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:17:43 by akusniak          #+#    #+#             */
-/*   Updated: 2023/03/05 15:27:22 by akusniak         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:29:04 by akusniak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 int			**ft_alloc_tab(int hauteur, int largeur);
 char		**ft_free_sub(char **tab, int j);
-void		ft_free_tab_char(char **data, int i);
+void		ft_free_tab_char(char **data);
 void		ft_free_tab_int(int **data, int i);
 int			ft_abs(int number);
 int			ft_minimum(int a, int b);

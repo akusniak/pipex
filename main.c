@@ -6,7 +6,7 @@
 /*   By: akusniak <akusniak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:52:30 by akusniak          #+#    #+#             */
-/*   Updated: 2023/03/08 16:32:01 by akusniak         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:27:40 by akusniak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	main(int ac, char **param)
 		close(fd[1]);
 		waitpid(pid1, NULL, 0);
 		waitpid(pid2, NULL, 0);
+		ft_free_tab_char(path->clean);
+		free(path);
 		return (0);
 	}
 	else
@@ -47,3 +49,4 @@ int	main(int ac, char **param)
 		return (1);
 	}
 }
+//besoin de rajouter les tests des flags
