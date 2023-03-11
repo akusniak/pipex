@@ -6,7 +6,7 @@
 /*   By: akusniak <akusniak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:56:00 by akusniak          #+#    #+#             */
-/*   Updated: 2023/03/10 18:39:45 by akusniak         ###   ########.fr       */
+/*   Updated: 2023/03/11 11:10:54 by akusniak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ void	ft_child_one(int *fd, int pid1, char **param, t_path *path)
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[0]);
 		close(fd1);
-		ft_execute_cmd(param[2], path);
+		ft_command(param[2], path);
+		perror("command 1\n");
+		ft_free_tab_char(path->clean);
+		free(path);
+		exit(EXIT_FAILURE);
 	}
-	else
-		return ;
 }
 
 void	ft_child_two(int *fd, int pid2, char **param, t_path *path)
@@ -54,8 +56,10 @@ void	ft_child_two(int *fd, int pid2, char **param, t_path *path)
 		dup2(fd2, STDOUT_FILENO);
 		close(fd[1]);
 		close(fd2);
-		ft_execute_cmd(param[3], path);
+		ft_command(param[3], path);
+		perror("command 2\n");
+		ft_free_tab_char(path->clean);
+		free(path);
+		exit(EXIT_FAILURE);
 	}
-	else
-		return ;
 }

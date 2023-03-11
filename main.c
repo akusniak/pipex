@@ -6,7 +6,7 @@
 /*   By: akusniak <akusniak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:52:30 by akusniak          #+#    #+#             */
-/*   Updated: 2023/03/10 18:39:56 by akusniak         ###   ########.fr       */
+/*   Updated: 2023/03/11 10:55:12 by akusniak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	main(int ac, char **param)
 		ft_child_two(fd, pid2, param, path);
 		close(fd[0]);
 		close(fd[1]);
-		waitpid(pid1, NULL, 0);
-		waitpid(pid2, NULL, 0);
 		ft_free_tab_char(path->clean);
 		free(path);
+		waitpid(pid1, NULL, 0);
+		waitpid(pid2, NULL, 0);
 		return (0);
 	}
 	else

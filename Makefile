@@ -10,7 +10,6 @@ RM = rm -f
 
 SRCS = main.c\
 		child.c\
-		action.c\
 		command.c\
 		path.c
 
