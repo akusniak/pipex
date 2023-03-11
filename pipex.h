@@ -6,7 +6,7 @@
 /*   By: akusniak <akusniak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:52:44 by akusniak          #+#    #+#             */
-/*   Updated: 2023/03/11 11:42:30 by akusniak         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:03:45 by akusniak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	ft_path(t_path *path);
 void	ft_close_pipe(int *fd);
 void	ft_clear_path(t_path *path);
 void	ft_close_unused_fd(int fd, int fd_bis);
+void	ft_relative_path(char *command);
 
 #endif
