@@ -6,7 +6,7 @@
 /*   By: akusniak <akusniak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:52:44 by akusniak          #+#    #+#             */
-/*   Updated: 2023/03/11 10:18:59 by akusniak         ###   ########.fr       */
+/*   Updated: 2023/03/11 11:42:30 by akusniak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ void	ft_child_one(int *fd, int pid1, char **param, t_path *path);
 void	ft_child_two(int *fd, int pid2, char **param, t_path *path);
 void	ft_command(char *command, t_path *path);
 void	ft_path(t_path *path);
+void	ft_close_pipe(int *fd);
+void	ft_clear_path(t_path *path);
+void	ft_close_unused_fd(int fd, int fd_bis);
 
 #endif
