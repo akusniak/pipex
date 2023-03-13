@@ -14,7 +14,9 @@
 
 void	ft_path(t_path *path)
 {
-	path->envp = "/mnt/nfs/homes/akusniak/bin/:/mnt/nfs/homes/akusniak/bin/:/usr/local/sbin/:/usr/local/bin/:/usr/sbin/:/usr/bin/:/sbin/:/bin/:/usr/games/:/usr/local/games/:/snap/bin/";
+	path->envp = "/mnt/nfs/homes/akusniak/bin/:/mnt/nfs/homes/akusniak/bin/\
+	:/usr/local/sbin/:/usr/local/bin/:/usr/sbin/:/usr/bin/:/sbin/:/bin/:/usr/\
+	games/:/usr/local/games/:/snap/bin/";
 	path->clean = ft_split(path->envp, ':');
 }
 
@@ -97,7 +99,8 @@ int	main(int ac, char **param)
 				exit(0);
 			i = i + 1;
 		}
-		fd->fork_quantity -= 2;
+		fd->fork_quantity -= 2;//car input et output deja fait
+
 		/*fork input*/
 		pid1 = fork();
 		if (pid1 < 0)
@@ -127,3 +130,11 @@ int	main(int ac, char **param)
 	ft_printf("Usage : .pipex file1 command1 command 2 command3 command... file2\n");
 	return (1);
 }
+
+/*
+
+
+
+
+
+*/

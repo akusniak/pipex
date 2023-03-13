@@ -12,57 +12,38 @@
 
 #include "pipex.h"
 
-void	ft_child_one(int *fd, int pid1, char **param, t_path *path)
+void	ft_child_one(t_pipex *pipex, char **param)
 {
-	int	fd1;
-
-
-	fd1 = open(param[1], O_RDONLY);
-	if (fd1 == -1)
+	if (pipex->pid1 == 0)
 	{
-		ft_close_unused_fd(fd[0], fd[1]);
-		perror("First file\n");
-		ft_clear_path(path);
-		exit(0);
-	}
-	if (pid1 == 0)
-	{
-		dup2(fd1, STDIN_FILENO);
-		dup2(fd[1], STDOUT_FILENO);
-		ft_close_unused_fd(fd[0], fd1);
+		dup2(pipex->fd_infile, STDIN_FILENO);
+		dup2(pipex->fd[1], STDOUT_FILENO);
+		ft_close_unused_fd(pipex->fd[0], pipex->fd_infile);
 		if (ft_strncmp(param[2], "/", 1) == 0)
 			ft_relative_path(param[2]);
 		else
-			ft_command(param[2], path);
+			ft_command(param[2], pipex->path);
 		perror("First command\n");
-		ft_clear_path(path);
+		ft_clear_path(pipex->path);
+		free(pipex);
 		exit(EXIT_FAILURE);
 	}
 }
 
-void	ft_child_two(int *fd, int pid2, char **param, t_path *path)
+void	ft_child_two(t_pipex *pipex, char **param)
 {
-	int	fd2;
-
-	fd2 = open(param[4], O_CREAT | O_RDWR, 00700);
-	if (fd2 == -1)
+	if (pipex->pid2 == 0)
 	{
-		ft_close_unused_fd(fd[0], fd[1]);
-		perror("Second file\n");
-		ft_clear_path(path);
-		exit(0);
-	}
-	if (pid2 == 0)
-	{
-		dup2(fd[0], STDIN_FILENO);
-		dup2(fd2, STDOUT_FILENO);
-		ft_close_unused_fd(fd[1], fd2);
+		dup2(pipex->fd[0], STDIN_FILENO);
+		dup2(pipex->fd_outfile, STDOUT_FILENO);
+		ft_close_unused_fd(pipex->fd[1], pipex->fd_outfile);
 		if (ft_strncmp(param[3], "/", 1) == 0)
 			ft_relative_path(param[3]);
 		else
-			ft_command(param[3], path);
+			ft_command(param[3], pipex->path);
 		perror("Second command\n");
-		ft_clear_path(path);
+		ft_clear_path(pipex->path);
+		free(pipex);
 		exit(EXIT_FAILURE);
 	}
 }

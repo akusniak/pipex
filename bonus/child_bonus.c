@@ -44,7 +44,7 @@ void	ft_child_output(int *fd, int pid2, char **param, t_path *path)
 {
 	int	fd2;
 
-	fd2 = open(param[4], O_CREAT | O_RDWR, 00700);
+	fd2 = open(param[4], O_CREAT | O_RDWR | O_TRUNC, 0777);
 	if (fd2 == -1)
 	{
 		ft_close_unused_fd(fd[0], fd[1]);

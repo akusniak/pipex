@@ -10,7 +10,10 @@ RM = rm -f
 
 SRCS = main.c\
 		child.c\
-		clean.c
+		clean.c\
+		command.c\
+		files.c\
+		path.c
 
 SRCS_BONUS =
 

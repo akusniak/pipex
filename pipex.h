@@ -30,13 +30,27 @@ typedef struct s_path
 	char	**clean;
 }				t_path;
 
-void	ft_child_one(int *fd, int pid1, char **param, t_path *path);
-void	ft_child_two(int *fd, int pid2, char **param, t_path *path);
+typedef struct s_pipex
+{
+	t_path	*path;
+	int		fd[2];
+	int		pid1;
+	int		pid2;
+	int		fd_infile;
+	int		fd_outfile;
+}				t_pipex;
+
+
+void	ft_child_one(t_pipex *pipex, char **param);
+void	ft_child_two(t_pipex *pipex, char **param);
 void	ft_command(char *command, t_path *path);
 void	ft_path(t_path *path);
 void	ft_close_pipe(int *fd);
 void	ft_clear_path(t_path *path);
 void	ft_close_unused_fd(int fd, int fd_bis);
 void	ft_relative_path(char *command);
+t_pipex	*ft_init_pipex();
+void	ft_open_files(t_pipex *pipex, char **param);
+
 
 #endif
