@@ -51,6 +51,6 @@ void	ft_close_unused_fd(int fd, int fd_bis);
 void	ft_relative_path(char *command);
 t_pipex	*ft_init_pipex();
 void	ft_open_files(t_pipex *pipex, char **param);
-
+void	ft_free(t_pipex *pipex);
 
 #endif

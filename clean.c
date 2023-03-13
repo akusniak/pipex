@@ -29,3 +29,10 @@ void	ft_close_unused_fd(int fd, int fd_bis)
 	close(fd);
 	close(fd_bis);
 }
+
+void	ft_free(t_pipex *pipex)
+{
+	ft_close_pipe(pipex->fd);
+	ft_clear_path(pipex->path);
+	free(pipex);
+}
