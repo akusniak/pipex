@@ -6,7 +6,7 @@
 /*   By: akusniak <akusniak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:43:45 by akusniak          #+#    #+#             */
-/*   Updated: 2023/03/10 18:29:14 by akusniak         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:04:32 by akusniak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stddef.h>
 # include <stdarg.h>
-# include "../libft/get_next_line.h"
+# include "libft/get_next_line.h"
 
 typedef struct s_list
 {

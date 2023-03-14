@@ -8,12 +8,12 @@ COLOUR_GREEN=\033[0;32m
 
 RM = rm -f
 
-SRCS = main.c\
-		child.c\
-		clean.c\
-		command.c\
-		files.c\
-		path.c
+SRCS = main_bonus.c\
+		child_bonus.c\
+		clean_bonus.c\
+		command_bonus.c\
+		files_bonus.c\
+		path_bonus.c
 
 SRCS_BONUS =
 
@@ -38,7 +38,7 @@ all :
 
 bonus : $(OBJS_BONUS)
 			$(LIB)
-			$(CC) $(CFLAGS) $(OBJS_BONUS) libft/libft.a -o $(NAME_BONUS)
+			$(CC) $(CFLAGS) $(OBJS_BONUS) ../libft/libft.a -o $(NAME_BONUS)
 
 clean :
 		$(RM) $(OBJS) $(OBJS_BONUS)
@@ -46,7 +46,7 @@ clean :
 
 fclean : clean
 		$(RM) $(NAME) $(CHECKER)
-		@cd ./libft && make fclean
+		@cd ../libft && make fclean
 		@echo "$(COLOUR_GREEN) fclean is done"
 
 re : fclean all
