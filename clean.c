@@ -6,22 +6,22 @@
 /*   By: akusniak <akusniak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 11:24:41 by akusniak          #+#    #+#             */
-/*   Updated: 2023/03/11 11:36:46 by akusniak         ###   ########.fr       */
+/*   Updated: 2023/03/14 11:19:49 by akusniak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_close_pipe(int *fd)
+void	ft_close_pipe(t_pipex *pipex)
 {
-	close(fd[0]);
-	close(fd[1]);
+	close(pipex->fd[0]);
+	close(pipex->fd[1]);
 }
 
-void	ft_clear_path(t_path *path)
+void	ft_clear_path(t_pipex *pipex)
 {
-	ft_free_tab_char(path->clean);
-	free(path);
+	ft_free_tab_char(pipex->path->clean);
+	free(pipex->path);
 }
 
 void	ft_close_unused_fd(int fd, int fd_bis)
@@ -30,9 +30,10 @@ void	ft_close_unused_fd(int fd, int fd_bis)
 	close(fd_bis);
 }
 
-void	ft_free(t_pipex *pipex)
+void	ft_free_pipex(t_pipex *pipex)
 {
-	ft_close_pipe(pipex->fd);
-	ft_clear_path(pipex->path);
+	ft_close_pipe(pipex);
+	ft_clear_path(pipex);
 	free(pipex);
+	pipex = NULL;
 }

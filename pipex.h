@@ -6,7 +6,7 @@
 /*   By: akusniak <akusniak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:52:44 by akusniak          #+#    #+#             */
-/*   Updated: 2023/03/11 13:03:45 by akusniak         ###   ########.fr       */
+/*   Updated: 2023/03/14 12:21:56 by akusniak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ typedef struct s_pipex
 void	ft_child_one(t_pipex *pipex, char **param);
 void	ft_child_two(t_pipex *pipex, char **param);
 void	ft_command(char *command, t_path *path);
-void	ft_path(t_path *path);
-void	ft_close_pipe(int *fd);
-void	ft_clear_path(t_path *path);
+t_path	*ft_path();
+void	ft_close_pipe(t_pipex *pipex);
+void	ft_clear_path(t_pipex *pipex);
 void	ft_close_unused_fd(int fd, int fd_bis);
 void	ft_relative_path(char *command);
 t_pipex	*ft_init_pipex();
 void	ft_open_files(t_pipex *pipex, char **param);
-void	ft_free(t_pipex *pipex);
+void	ft_free_pipex(t_pipex *pipex);
+int		ft_is_empty(char *command);
 
 #endif

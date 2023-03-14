@@ -6,7 +6,7 @@
 /*   By: akusniak <akusniak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:52:30 by akusniak          #+#    #+#             */
-/*   Updated: 2023/03/11 13:15:44 by akusniak         ###   ########.fr       */
+/*   Updated: 2023/03/14 11:23:53 by akusniak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,18 @@ t_pipex	*ft_init_pipex()
 	pipex = malloc(sizeof(t_pipex));
 	if (pipex == NULL)
 		return (NULL);
-	pipex->path = malloc(sizeof(t_path));
+	pipex->path = ft_path();
 	if (pipex->path == NULL)
+	{
+		free(pipex);
 		return (NULL);
-	ft_path(pipex->path);
+	}
 	if (pipe(pipex->fd) == -1)
-			return (NULL);
+	{
+		ft_clear_path(pipex);
+		free(pipex);
+		return (NULL);
+	}
 	return (pipex);
 }
 
@@ -43,14 +49,14 @@ int	main(int ac, char **param)
 		pipex->pid1 = fork();
 		if (pipex->pid1 < 0)
 			exit(0);
-		ft_child_one(pipex, param);
+		if (pipex->pid1 == 0)
+			ft_child_one(pipex, param);
 		pipex->pid2 = fork();
 		if (pipex->pid2 < 0)
 			exit(0);
-		ft_child_two(pipex, param);
-		ft_free(pipex);
-		waitpid(pipex->pid1, NULL, 0);
-		waitpid(pipex->pid2, NULL, 0);
-		return(0);
+		if (pipex->pid2 == 0)
+			ft_child_two(pipex, param);
+		waitpid(-1, NULL, 0);
+		ft_free_pipex(pipex);
 	}
 }

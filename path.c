@@ -1,9 +1,17 @@
 #include "pipex.h"
 
-void	ft_path(t_path *path)
+t_path	*ft_path()
 {
+	t_path	*path;
+
+	path = malloc(sizeof(t_path));
+	if (path == NULL)
+		return (NULL);
 	path->envp = "/mnt/nfs/homes/akusniak/bin/:/mnt/nfs/homes/akusniak/bin/:/usr/local/sbin/:/usr/local/bin/:/usr/sbin/:/usr/bin/:/sbin/:/bin/:/usr/games/:/usr/local/games/:/snap/bin/";
 	path->clean = ft_split(path->envp, ':');
+	if (path->clean == NULL)
+		return (NULL);
+	return (path);
 }
 
 void	ft_relative_path(char *command)
